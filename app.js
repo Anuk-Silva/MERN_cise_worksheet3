@@ -1,7 +1,7 @@
 // app.js
 const express = require("express");
-require("dotenv").config({ path: "./env"});
 const connectDB = require("./config/db");
+require("dotenv").config({ path: "./env"});
 var cors = require("cors");
 const path = require("path");
 const { response } = require('express');
@@ -27,7 +27,7 @@ app.use("/api/books", books);
 app.use(express.static(path.join(__dirname, "my-cise-mern-book-app/build")))
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "my-cise-mern-book-app", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "my-cise-mern-book-app/build", "index.html"));
 })
 
 const PORT = process.env.PORT || 5000;
