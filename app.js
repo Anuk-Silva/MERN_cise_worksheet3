@@ -12,7 +12,7 @@ connectDB();
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 //app.get('/', (req, res) => res.send('Hello world!'));
-app.use('/routes/api/books', books);
+app.use('/api/books', books);
 
 app.use(express.static(path.join(__dirname, "./my-cise-mern-book-app/build")))
 app.get("*", (req, res) => {
