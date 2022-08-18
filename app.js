@@ -1,8 +1,10 @@
 // app.js
-
 const express = require("express");
+require("dotenv").config({ path: "./env"});
 const connectDB = require("./config/db");
 var cors = require("cors");
+const path = require("path");
+const { response } = require('express');
 
 // routes
 const books = require("./routes/api/books");
@@ -14,15 +16,20 @@ connectDB();
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
-
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => res.send("Hello world!"));
+// app.get("/", (req, res) => res.send("Hello world!"));
 
 // use Routes
 app.use("/api/books", books);
 
-const port = process.env.PORT || 8082;
+app.use(express.static(path.join(__dirname, "my-cise-mern-book-app/build")))
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "my-cise-mern-book-app", "build", "index.html"));
+})
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
