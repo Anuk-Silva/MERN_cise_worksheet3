@@ -1,4 +1,4 @@
-require('dotenv').config({ path: "./env"});
+require("dotenv").config({ path: "./env"});
 const express = require('express');
 const connectDB = require('./config/db');
 var cors = require('cors');
@@ -11,7 +11,8 @@ connectDB();
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
-app.use('/api/books', books);
+//app.get('/', (req, res) => res.send('Hello world!'));
+app.use('/routes/api/books', books);
 
 app.use(express.static(path.join(__dirname, "./my-cise-mern-book-app/build")))
 app.get("*", (req, res) => {
