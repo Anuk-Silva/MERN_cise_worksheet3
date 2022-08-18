@@ -13,7 +13,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 app.use('/api/books', books);
 
-app.use(express.static(path.join(__dirname, "./my-cise-mern-book-app/build")));
+app.use(express.static(path.join(__dirname, "./my-cise-mern-book-app/build")))
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "my-cise-mern-book-app", "build", "index.html"))
 })
