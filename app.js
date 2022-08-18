@@ -3,13 +3,10 @@ require("dotenv").config({ path: "./env" });
 const express = require("express");
 const connectDB = require("./config/db");
 var cors = require("cors");
-const path = require("path");
-const { response } = require('express');
-
-// routes
 const books = require("./routes/api/books");
-
 const app = express();
+const path = require("path");
+const { response } = require("express");
 
 // Connect Database
 connectDB();
@@ -24,8 +21,7 @@ app.use(express.json({ extended: false }));
 // use Routes
 app.use("/api/books", books);
 
-app.use(express.static(path.join(__dirname, "my-cise-mern-book-app/build")))
-
+app.use(express.static(path.join(__dirname, "./my-cise-mern-book-app/build")))
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "my-cise-mern-book-app", "build", "index.html"))
 })
