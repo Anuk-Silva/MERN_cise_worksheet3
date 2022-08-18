@@ -8,7 +8,7 @@
     "start": "node app.js",
     "app": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd my-cise-mern-book-app && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix my-cise-mern-book-app && npm run build --prefix my-cise-mern-book-app"
   },
   "repository": {
     "type": "git",
