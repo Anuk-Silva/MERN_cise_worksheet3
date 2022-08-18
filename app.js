@@ -8,7 +8,6 @@ const app = express();
 const path = require('path');
 const { response } = require('express');
 
-// Connect Database
 connectDB();
 
 app.use(cors({ origin: true, credentials: true }));
